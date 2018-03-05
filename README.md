@@ -5,6 +5,7 @@
 * HTML
 	* [特殊符号对照表部分](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/HTML/%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7%E5%AF%B9%E7%85%A7%E8%A1%A8.md)
 * Chaos
+	* [前端下载文件遇到的一些问题](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/CHAOS/download-file.md)
 
 ## Tips
 
