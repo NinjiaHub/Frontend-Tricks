@@ -1,9 +1,12 @@
 # 前端下载文件遇到的一些问题
 
 * [前端下载文件的方式](#ways)
-	* [使用 `window.open` 方法下载](#window-open)
 	* [使用 a 标签下载](#a-tag)
 	* [使用虚拟 a 标签下载](#virtual-a-tag)
+	* [使用 `window.open` 方法下载](#window-open)
+	* [使用 iframe 下载](#iframe)
+	* [使用 blob + ObjectURL + a 标签的方式下载](#blob-ObjectURL-a)
+* [服务端通过修改 HTTP 协议头实现修改文件名](#http-header)
 * [参考链接](#links)
 * [作者信息](#author)
 
@@ -68,6 +71,123 @@ let url = (async function () {
 })()
 w.location = url
 ```
+
+**另：不要通过 `window.open` 方法打开不安全的下载页面，因为新打开的页面可以通过 `window.opener` 获取你的页面引用。详见 [rel=noopener](./rel-noopener.md)**。
+
+### <span id="iframe">5、使用 iframe 下载</span>
+
+使用 iframe 下载文件与使用 [虚拟 a 标签下载](#virtual-a-tag) 或者 [使用 `window.open` 方法下载](#window-open) 具有一样的局限：只能下载浏览器不能渲染的文件。其本质也是借助浏览器会下载不能渲染的文件的特性。
+
+下载代码与使用 [虚拟 a 标签下载](#virtual-a-tag) 差不多：
+
+```javascript
+let f = document.createElement('iframe')
+# document.body.append(f)
+f.src = 'URL/to/file'
+# document.body.remove(f)
+```
+
+**注释部分的代码可以不用，因为可以通过内存中的 iframe 实现下载。**
+
+### <span id="blob-ObjectURL-a">6、使用 blob + ObjectURL + a 标签的方式下载</span>
+
+该实现方式的代码如下：
+
+```javascript
+/**
+ * 获取 blob
+ * @param  {String} url 目标文件地址
+ * @return {Promise} 
+ */
+function getBlob(url) {
+    return new Promise(resolve => {
+        const xhr = new XMLHttpRequest();
+
+        xhr.open('GET', url, true);
+        xhr.responseType = 'blob';
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+                resolve(xhr.response);
+            }
+        };
+
+        xhr.send();
+    });
+}
+
+/**
+ * 保存
+ * @param  {Blob} blob     
+ * @param  {String} filename 想要保存的文件名称
+ */
+function saveAs(blob, filename) {
+    if (window.navigator.msSaveOrOpenBlob) {
+        navigator.msSaveBlob(blob, filename);
+    } else {
+        const link = document.createElement('a');
+        const body = document.querySelector('body');
+
+        link.href = window.URL.createObjectURL(blob);
+        link.download = filename;
+
+        // fix Firefox
+        link.style.display = 'none';
+        body.appendChild(link);
+        
+        link.click();
+        body.removeChild(link);
+
+        window.URL.revokeObjectURL(link.href);
+    }
+}
+
+/**
+ * 下载
+ * @param  {String} url 目标文件地址
+ * @param  {String} filename 想要保存的文件名称
+ */
+function download(url, filename) {
+    getBlob(url).then(blob => {
+        saveAs(blob, filename);
+    });
+}
+
+作者：RoamIn
+链接：https://www.jianshu.com/p/6545015017c4
+來源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+```
+
+**注：©上面的代码摘抄自 [JavaScript 实现文件下载并重命名](https://www.jianshu.com/p/6545015017c4)。**
+
+这种方式的下载原理：
+
+* 1、通过 Ajax 请求将要下载的文件以 `blob` 的格式下载到本地；
+* 2、通过 `window.URL.createObjectURL(blob)` 创建一个标识文件对象的 Object URL；更多文件操作的内容可以参考 [前端 file api](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/HTML/file-api.md)；
+* 3、通过 [使用虚拟 a 标签下载](#virtual-a-tag) 下载到本地；
+
+使用该方式具有以下几种限制：
+
+* 1、需要下载 blob 格式的文件，所以需要服务器支持 `responseType: blob`；
+* 2、需要先将文件下载到本地之后再使用 `window.URL.createObjectURL(blob)` 创建 Object URL，所以如果文件比较大，ajax 请求需要很久才能下载完成，下载期间没有任何反应，所以体验不好；
+
+优势：
+
+* 可以本地控制修改文件名，即使是下载 OSS 文件也可以在本地定义文件名。
+
+## <span id="http-header">服务端通过修改 HTTP 协议头实现修改文件名</span>
+
+上面的下载方式都不能很好的解决本地下载且修改文件名的问题；这里要讲的下载方式可以比较好的解决问题：既可以持续下载让用户看到，又能本地修改下载后的文件名字。
+
+我们知道服务器上的静态文件可以通过 a 标签 + download 属性的方式实现下载，并且可以修改下载到本地的文件名字；而 OSS 上的文件，或者通过请求接口下载的文件，不能通过设置 download 属性来修改下载到本地的文件的名字，这个时候可以请服务端配合，在下载接口中返回如下 HTTP 协议头：
+
+```http
+'Content-Disposition: attachment; filename="downloaded.pdf"'
+```
+
+浏览器在请求响应时，如发现该 HTTP 协议头，会将 `filename` 的值设置为下载文件的名字，这样就可以避免使用 blob 方式下载时的“假死”问题，也修改了下载文件的名字。
+
+可以在设计接口时，留一个设置文件名的参数，这样就可以在调用下载接口时，将想要设置的文件名以参数的形式传递到服务端；服务端接口在响应时，在响应中带上 HTTP 协议头，通知浏览器修改下载文件的名字。
 
 ## <span id="links">参考链接</span> 🖇
 
