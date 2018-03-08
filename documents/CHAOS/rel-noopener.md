@@ -8,6 +8,7 @@
 	* [`window.opener = null`](#opener-null)
 	* [iframe](#inject-iframe)
 	* [解决该问题的库 - blankshield](#blankshield)
+* [性能问题](#performance)
 * [参考链接](#links)
 * [作者信息](#author)
 
@@ -56,6 +57,20 @@ iframe 得到了绝大多数浏览器的支持，所以兼容性最好。在打�
 ### <span id="blankshield">解决该问题的库 - blankshield</span>
 
 [blankshield](https://github.com/danielstjules/blankshield)：该插件使用 [内嵌 iframe 打开新窗口](#inject-iframe) 的办法实现在新窗口中打开子页面，规避了 tabnabbing 问题；并且对 IE、Safari 等浏览器做了兼融。如果自己做的产品对浏览器兼容有要求的话，推荐使用该插件。
+
+## <span id="performance">性能问题</span>
+
+除了安全方面的问题，使用 `target="_blank"`会引发性能方面的问题：
+
+我们知道浏览器中 JavaScript 和页面渲染是通过一个线程来处理的，即平时我们所说的“单线程”(这里的“单线程”是指处理 JavaScript 和 渲染的线程，浏览器本身是多线程的)；如果一个任务(task)长时间占用这个主线程时，其他任务就得等待该任务执行完之后再执行，而且页面会卡住，会重新渲染。
+
+而通过使用 `target="_blank"` 或者 `window.open()` 打开的的新页面(子窗口) A 和老页面(父窗口) B 公用同一个主线程，所以页面 A 和页面 B 中所有的 JS 任务和页面渲染都要在同一个线程中进行，如果其中一个页面的任务比较多时，另外一个的任务就被挂起；表现出来就是页面有卡顿。如果主线程被一个页面中的任务阻塞，另外一个页面中的文字都不能被选中。
+
+所以如果两个页面是通过 `target="_blank"` 或者 `window.open()` 打开的，而且的任务都比较密集的话，虽然浏览器会挂起非活跃状态 tab 中的一部分任务，但是另外一个页面中的部分任务还是会被阻塞出现页面卡顿的情况，这种情况可以通过这个 [Demo](https://jakearchibald.com/2016/performance-benefits-of-rel-noopener/#demo) 查看。
+
+虽然可以通过 [内嵌 iframe](#inject-iframe) 的方式解决 tabnabbing 的问题，但是能否解决性能问题是个未知数：如果内嵌的 iframe 和 宿主页面共享同一个主线程的话，则通过 iframe 在新 tab 中打开的页面应该也与 iframe 的宿主页面共享一个主线程，这种方法并不能解决性能问题；而如果内嵌的 iframe 与宿主页面不共享同一个主线程的话，则不会出现上面说的性能问题。内嵌 iframe 与宿主页面是否共享主线程暂时不知，如果有知道的小伙伴可以告诉我。
+
+所以，在链接跳转时，还是推荐使用 `<a href="">anchor</a>` 这种加载新页面替换当前页面的方式跳转，不推荐使用 `target="_blank"` 属性。
 
 ## <span id="links">参考链接</span> 🖇
 
