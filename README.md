@@ -8,6 +8,8 @@
 * HTML
 	* [特殊符号对照表部分](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/HTML/%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7%E5%AF%B9%E7%85%A7%E8%A1%A8.md)
 	* [结构化克隆算法 & 可转移对象(Structured Clone Algorithm & Transferable Objects)](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/HTML/structured-clone-algorithm-transferable.md)
+	* 文件操作相关
+		* [Blob](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/HTML/file/blob.md)
 * JavaScript
 	* [在 Chrome 中使用本地文件创建 Web Worker](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/create-worker-from-local-file-in-chrome.md)
 
