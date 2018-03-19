@@ -11,6 +11,7 @@
 	* [结构化克隆算法 & 可转移对象(Structured Clone Algorithm & Transferable Objects)](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/HTML/structured-clone-algorithm-transferable.md)
 	* 文件操作相关
 		* [Blob](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/HTML/file/blob.md)
+		* [base64 转 blob](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/HTML/file/base64-to-blob.md)
 * JavaScript
 	* [在 Chrome 中使用本地文件创建 Web Worker](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/create-worker-from-local-file-in-chrome.md)
 
