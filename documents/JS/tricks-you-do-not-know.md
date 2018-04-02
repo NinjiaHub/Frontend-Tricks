@@ -5,6 +5,8 @@
 * [参考](#links)
 * [作者](#author)
 
+> **该文件会持续更新，不断写入新学到的 Trick。**
+
 ## <span id="switch-case">switch 中的 case 语句</span>
 
 > If there is no break then the execution continues with the next case without any checks.
