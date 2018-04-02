@@ -43,7 +43,7 @@ switch (a) {
 > Too big second!
 ```
 
-`switch(a)` 语句在运行时，遇到 `case 4` 时匹配成功；由于该 case 语句没有 `break` 关键字，所以会一直向后运行，直到 **(*)** 所在行时遇到 `break` 关键字，switch 语句结束。
+`switch(a)` 语句在运行时，遇到 `case 4` 时匹配成功；由于该 case 语句没有 `break` 关键字，所以会一直向后运行，直到 **`(*)`** 所在行时遇到 `break` 关键字，switch 语句结束。
 
 **注：Get it from [The "switch" statement](https://javascript.info/switch#an-example).**
 
