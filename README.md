@@ -13,6 +13,7 @@
 		* [Blob](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/HTML/file/blob.md)
 		* [base64 转 blob](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/HTML/file/base64-to-blob.md)
 * JavaScript
+	* [Tricks That You Don't Konw in JavaScript](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/tricks-you-do-not-know.md)
 	* [在 Chrome 中使用本地文件创建 Web Worker](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/create-worker-from-local-file-in-chrome.md)
 
 ## Tips
