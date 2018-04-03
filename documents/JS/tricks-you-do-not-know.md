@@ -5,6 +5,7 @@
 > **该文件会持续更新，不断写入新学到的 Trick。** 
 
 * [switch 中的 case 语句](./tricks-you-do-not-know-folder/switch-case.md)
+* [变量命名规则](./tricks-you-do-not-know-folder/variable-name.md)
 * [作者](#author)
 
 ## <span id="author">作者 🙉</span>
