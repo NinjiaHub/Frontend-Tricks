@@ -1,4 +1,4 @@
-# 对象解构可以应用在数组上
+# 在数组上应用对象解构
 
 > 写这篇文章的起因在于查看 [justjavac/the-front-end-knowledge-you-may-not-know - 对象解构可以应用在数组上](https://github.com/justjavac/the-front-end-knowledge-you-may-not-know/issues/20#issuecomment-379605209) 这个知识点时回复用户 **@jjvein** 的回复；恰好最近在看相关的知识点，于是写了这篇文章。
 
