@@ -80,6 +80,42 @@ hop === Object.prototype.hasOwnProperty // true
 
 从上面的例子可以看出，解构操作会沿着当前对象及其原型链一直向上查找，直到 `Object.prototype.__proto__` 对象。如果被解构对象及其原型链上不存在该属性，则返回 `undefined`。
 
+## 不只是对象
+
+在 [迷渡(justjavac)](https://github.com/justjavac) 的提点下，看了一下 ecma262 规范中 [Runtime Semantics: DestructuringAssignmentEvaluation](https://tc39.github.io/ecma262/#sec-runtime-semantics-destructuringassignmentevaluation) 部分的定义：
+
+> 1、Perform ? **RequireObjectCoercible(value)**.
+> 
+> 2、Return **NormalCompletion(empty)**.
+> 
+	ObjectAssignmentPattern:
+		{AssignmentPropertyList}
+		{AssignmentPropertyList,}
+> 1、Perform ? **RequireObjectCoercible(value)**.
+> 
+> 2、Perform ? PropertyDestructuringAssignmentEvaluation for AssignmentPropertyList using value as the argument.
+> 
+> 3、Return **NormalCompletion(empty)**.
+
+在运行时，引擎会先执行 **RequireObjectCoercible(value)** 操作，而这一步操作决定了对象解构不止可以用于对象(包括 Object、Function、Array、RegExp、Date...)，而且可用于基本数据类型(Number、String、Boolean、Symbol)。由于 **undefined** 和 **null** 没有对应的包装类型，所以对这两种数据进行对象解构会报错。
+
+**RequireObjectCoercible(value)：**
+
+> The abstract operation **RequireObjectCoercible** throws an error if argument is a value that cannot be converted to an Object using **ToObject**.
+> 
+> 对于不能通过 **ToObject** 转换为对象的 argument，抽象操作 **RequireObjectCoercible** 应抛出异常。
+
+所以 **RequireObjectCoercible(value)** 这部分会通过 **ToObject** 将 argument 转换为对象，基本数据类型转换为对应的包装对象，然后再进行后续的解构操作。
+
+所以，对象解构不止可以用于对象，也可以用于部分基本数据类型(Number、String、Boolean、Symbol)。
+
+**例：**
+
+```javascript
+let {__proto__: p} = 1
+p === Number.prototype // true
+```
+
 ## <span id="author">作者 🙉</span>
 
 * [GitHub](https://github.com/Tao-Quixote)
