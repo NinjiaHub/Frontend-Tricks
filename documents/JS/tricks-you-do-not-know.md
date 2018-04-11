@@ -7,6 +7,8 @@
 * [switch 中的 case 语句](./tricks-you-do-not-know-folder/switch-case.md)
 * [变量命名规则](./tricks-you-do-not-know-folder/variable-name.md)
 * [在数组上应用解构](./tricks-you-do-not-know-folder/using-destructuring-on-array.md)
+* Date
+	* [自动纠正日期【**译**】](./tricks-you-do-not-know-folder/date-autocorrection.md)
 * [作者](#author)
 
 ## <span id="author">作者 🙉</span>
