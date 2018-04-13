@@ -9,6 +9,7 @@
 * [在数组上应用解构](./tricks-you-do-not-know-folder/using-destructuring-on-array.md)
 * Date
 	* [自动纠正日期【**译**】](./tricks-you-do-not-know-folder/date-autocorrection.md)
+* [JSON](./tricks-you-do-not-know-folder/json.md)
 * [作者](#author)
 
 ## <span id="author">作者 🙉</span>
