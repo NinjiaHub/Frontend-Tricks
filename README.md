@@ -13,8 +13,13 @@
 		* [Blob](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/HTML/file/blob.md)
 		* [base64 转 blob](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/HTML/file/base64-to-blob.md)
 * JavaScript
-	* [Tricks That You Don't Konw in JavaScript](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/tricks-you-do-not-know.md)
 	* [在 Chrome 中使用本地文件创建 Web Worker](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/create-worker-from-local-file-in-chrome.md)
+	* [switch 中的 case 语句](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/switch-case.md)
+	* [变量命名规则](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/variable-name.md)
+	* [在数组上应用解构](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/using-destructuring-on-array.md)
+	* [JSON](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/json.md)
+	* Date
+		* [自动纠正日期【**译**】](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/date-autocorrection.md)
 
 ## Tips
 
