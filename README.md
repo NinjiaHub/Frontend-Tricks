@@ -18,6 +18,7 @@
 	* [变量命名规则](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/variable-name.md)
 	* [在数组上应用解构](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/using-destructuring-on-array.md)
 	* [JSON](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/json.md)
+	* [JavaScript 中没有 `else if` 结构](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/there-is-no-else-if-in-js.md)
 	* Date
 		* [自动纠正日期【**译**】](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/date-autocorrection.md)
 
