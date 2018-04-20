@@ -19,6 +19,7 @@
 	* [在数组上应用解构](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/using-destructuring-on-array.md)
 	* [JSON](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/json.md)
 	* [JavaScript 中没有 `else if` 结构](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/there-is-no-else-if-in-js.md)
+	* [闭包(closure) 中的垃圾回收](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/closure-garbage-collection.md)
 	* Date
 		* [自动纠正日期【**译**】](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/date-autocorrection.md)
 
