@@ -22,6 +22,7 @@
 	* [闭包(closure) 中的垃圾回收](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/closure-garbage-collection.md)
 	* Date
 		* [自动纠正日期【**译**】](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/date-autocorrection.md)
+	* [函数声明(Function Declaration) VS 函数表达式(Function Expression)](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/function-declaration-expression.md)
 
 ## Tips
 
