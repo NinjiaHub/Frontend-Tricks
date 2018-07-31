@@ -141,7 +141,7 @@ w.postMessage('Hello Worker')
 
 上面的实现方式，先将 `worker_function` 转换为字符串，作为 `Blob()` 的构造函数的参数；然后将构建出来的 Blob 对象的实例作为 `window.URL.createObjectURL()` 的方法，创建一个标识 `worker_function` 实现内容字符串文件的 ObjectURL；最后使用该 ObjectURL 表示 JS 文件的引用来创建一个新的 Worker 对象。生成的 Blob 实例包含 `worker_function` 函数的所有实现，并且该函数被封装成了一个 IIFE(立即执行函数表达式)，被下载到 worker 中时会立即执行，在当前 worker 实例上注册一个 `onmessage` 回调。
 
-上面的方式将 Web Worker 要执行的内容，转换存储在 Blob 文件，并使用 ObjectURL 来标识该 Blob 文件并使浏览器可以引用，从而
+上面的方式将 Web Worker 要执行的内容，转换存储在 Blob 文件，并使用 ObjectURL 来标识该 Blob 文件并使浏览器可以引用，从而避开浏览器的同源策略以达到使用本地文件创建 Web Worker 的目的。
 
 不了解 Web 端文件操作的小伙伴请阅读下面的 [File Api](../HTML/file-api.md)。
 
