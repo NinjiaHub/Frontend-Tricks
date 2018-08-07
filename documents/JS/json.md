@@ -95,6 +95,34 @@ JSON.stringify(obj) // {"a":"a","b":"c"}
 
 从上面的规范可以看出，对于对象的每一个对象类型属性，在序列化时都会检查其是否有 **toJSON** 属性并检查是否可以调用，如果存在且可以调用的话，JS 引擎会将该属性调用的返回值作为该属性（对象）的值进行后续处理。如果一个属性经过处理后仍然是一个对象的话，则会递归调用 **SerializeJSONArray(value)** 或者 **SerializeJSONObject(value)**，知道所有嵌套的属性（对象）都被序列化，然后返回序列化后的字符串。
 
+### 特例 - NaN & Infinity
+
+对于对象中的数字除了有限的数字之外，其余形式的数字一律转换为 `null`：
+
+```javascript
+let obj = {a: 3, b: NaN, c: Infinity}
+JSON.stringify(obj) // "{"a":3,"b":null,"c":null}"
+```
+
+这一点在规范中也有说明：
+
+> // 有限数字转换为对应的字符串，否则返回 "null"
+> 
+> * 9、If **Type(value)** is Number, then
+	* a、If **value** is finite, return !**ToString(value)**. // 如果为有限数字，转换为字符串
+	* b、Return "null".</br> // 其他情况一律转换为 `null`
+
+### 特例 - Data.prototype.toJSON
+
+在对对象进行序列化的过程中，`JSON.stringify` 会检测当前对象是否有 `toJSON` 方法，如果有的话，则会放弃调用默认方法转而调用该对象的 `toJSON` 方法；JS 中的 Data 对象就是一个例子，在对 Data 对象的实例进行序列化时会调用 `Data.prototype.toJSON` 方法，如：
+
+```javascript
+let obj = {d: new Date()};
+JSON.stringify(obj); // "{"d":"2018-08-05T03:36:27.628Z"}"
+```
+
+想要了解详细的同学，可以跳转 [toJSON](https://github.com/Tao-Quixote/understand-es-by-ecma262/blob/master/documents/objects/date-tostring-valueof-tojson.md#tojson) 查看 ECMA262 规范中是如何定义 `Data.prototype.toJSON` 的。
+
 ## JSON.parse(str[, reviver])
 
 这里主要讲可选参数 `reviver` 的使用场景：
