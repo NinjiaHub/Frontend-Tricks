@@ -24,6 +24,8 @@
     * [自动纠正日期【**译**】](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/date-autocorrection.md)
   * [函数声明(Function Declaration) VS 函数表达式(Function Expression)](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/function-declaration-expression.md)
   * [无法在对象上添加属性相关的问题](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/can-not-add-property-to-object.md)
+* CSS
+  * [动画 - animation](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/css/animation.md)
 
 ## Tips
 
