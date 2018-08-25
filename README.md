@@ -26,6 +26,7 @@
   * [无法在对象上添加属性相关的问题](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/JS/can-not-add-property-to-object.md)
 * CSS
   * [动画 - animation](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/css/animation.md)
+  * [媒体查询 - media-query](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/css/media-query.md)
 
 ## Tips
 
