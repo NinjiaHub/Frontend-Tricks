@@ -28,6 +28,7 @@
   * [动画 - animation](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/css/animation.md)
   * [媒体查询 - media-query](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/css/media-query.md)
   * [自定义字体 - font-face](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/css/font-face.md)
+  * [多列布局 - columns](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/css/column.md)
 
 ## Tips
 
