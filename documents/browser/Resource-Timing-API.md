@@ -29,6 +29,15 @@ Resource Timing API 提供了检查、分析一个资源在请求过程中详细
 
 ![](../../images/resource-timing-api.png)
 
+## 通过 js 获取
+
+可以在 DevTools 中的 console 中使用下面的代码，performance 可以使用 Resource Timing API 追踪所有资源：
+
+```js
+performance.getEntriesByType('resource').filter(item => item.name.includes('resourceName'));
+```
+上面的 resourceName 是指要查看的具体请求，例如 `a.css` `b.js` `c.png` 这种。
+
 ## 其他
 
 Resource Timing API 依赖 [high-resolution timestamps](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/browser/high-resolution-timestamps.md)，详细可以点击链接查看 high-resolution timestamps。
