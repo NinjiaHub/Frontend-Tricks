@@ -4,6 +4,7 @@
 
 * Browser
 	* [Resource Timing API](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/browser/Resource-Timing-API.md)
+	* [High-Resolution Timestamps](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/browser/high-resolution-timestamps.md)
 * Chaos
   * [前端下载文件遇到的一些问题](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/CHAOS/download-file.md)
   * [rel=noopener](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/CHAOS/rel-noopener.md)
