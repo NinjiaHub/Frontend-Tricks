@@ -37,6 +37,7 @@
   * [多列布局 - columns](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/css/column.md)
   * [垂直对齐 - vertical-align](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/css/vertical-align.md)
   * [BEM](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/CHAOS/BEM.md)
+  * [CSSO](https://github.com/NinjiaHub/Frontend-Tricks/blob/master/documents/css/csso.md)
 
 ## Tips
 
